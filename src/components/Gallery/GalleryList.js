@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
+import GalleryItem from './GalleryItem.js'
 
 class GalleryList extends Component {
       appendImagesToPage = () => {
     let imagesArr = [];
     for (let i = 0; i < this.props.photoGallery.length; i++) {
       const createImage = this.props.photoGallery[i];
-      const createRow = (<tr key={i}>
-                          <td><img src={createImage.path} alt="white goat"/></td>
-                          <td>{createImage.description}</td>
-                          <td>{createImage.likes}</td>
-                        </tr>)
+      const createRow = (<GalleryItem createImage={createImage} key={i}/>)
       imagesArr.push(createRow);
       
     }
@@ -30,7 +27,7 @@ class GalleryList extends Component {
                     {this.appendImagesToPage()}
                 </tbody>
             </table>
-        )
+        );
     }
 }
 
