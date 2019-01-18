@@ -29,6 +29,7 @@ class GalleryItem extends Component {
             <tr key={this.props.i}>
                 <td onClick={this.handleColumnClick}>{thingToShow}</td>
                 <td>{this.props.createImage.likes}</td>
+                <td><button>Like</button></td>
             </tr>
         );
     }
