@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
+import GalleryList from './../Gallery/GalleryList.js'
 
 class App extends Component {
   constructor() {
@@ -29,20 +30,7 @@ class App extends Component {
   }
 
   
-  appendImagesToPage = () => {
-    let imagesArr = [];
-    for (let i = 0; i < this.state.photoGallery.length; i++) {
-      const createImage = this.state.photoGallery[i];
-      const createRow = (<tr>
-                          <td><img src={createImage.path}/></td>
-                          <td>{createImage.description}</td>
-                          <td>{createImage.likes}</td>
-                        </tr>)
-      imagesArr.push(createRow);
-      
-    }
-    return imagesArr;
-  }
+
 
   render() {
     return (
@@ -51,11 +39,7 @@ class App extends Component {
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br/>
-        <table>
-          <tbody>
-            {this.appendImagesToPage()}
-          </tbody>
-        </table>
+        <GalleryList photoGallery={this.state.photoGallery}/>
         
         {/* <img src="images/goat_small.jpg"/> */}
       </div>
