@@ -1,6 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const galleryItems = require('../modules/gallery.data');
+const pg = require('pg');
+
+const Pool = pg.Pool;
+const pool = new Pool({
+    database: 'image-gallery',
+    host: 'localhost',
+    port: 5432,
+    max: 10,
+    idleTimeoutMillis: 10000
+});
+
 
 // DO NOT MODIFY THIS FILE FOR BASE MODE
 
@@ -18,7 +29,7 @@ router.put('/like/:id', (req, res) => {
 
 // GET Route
 router.get('/', (req, res) => {
-    res.send(galleryItems);
+    
 }); // END GET Route
 
 module.exports = router;
