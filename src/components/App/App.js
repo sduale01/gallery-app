@@ -17,6 +17,7 @@ class App extends Component {
   }
 
 
+  // To display what is on the server on to the DOM
   refreshGallery = () => {
     axios({
       method: 'GET',
@@ -26,6 +27,10 @@ class App extends Component {
       this.setState({
         photoGallery: response.data
       })
+    }).catch(error => {
+      console.log('error in when attempting GET', error);
+      alert('error in when attempting GET')
+      
     })
   }
 
@@ -39,7 +44,7 @@ class App extends Component {
           <h1 className="App-title">Gallery of my life</h1>
         </header>
         <br/>
-        <GalleryList photoGallery={this.state.photoGallery}/>
+        <GalleryList photoGallery={this.state.photoGallery} refreshGallery={this.refreshGallery}/>
         
         {/* <img src="images/goat_small.jpg"/> */}
       </div>

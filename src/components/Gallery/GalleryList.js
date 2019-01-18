@@ -6,7 +6,7 @@ class GalleryList extends Component {
     let imagesArr = [];
     for (let i = 0; i < this.props.photoGallery.length; i++) {
       const createImage = this.props.photoGallery[i];
-      const createRow = (<GalleryItem createImage={createImage} key={i}/>)
+      const createRow = (<GalleryItem createImage={createImage} key={i} refreshGallery={this.props.refreshGallery}/>)
       imagesArr.push(createRow);
       
     }

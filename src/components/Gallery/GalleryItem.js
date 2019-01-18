@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Axios from 'axios';
 
 class GalleryItem extends Component {
     constructor(props) {
@@ -15,6 +16,19 @@ class GalleryItem extends Component {
         });
     }
 
+    // This will update the likes when like btn is clicked
+    updateLikes = () => {
+        console.log('like clicked');
+
+        Axios({
+            method: 'PUT',
+            url: `/gallery/like/${this.props.createImage.id}`
+        }).then(response => {
+            this.props.refreshGallery();
+        })
+        
+    }
+
 
 
     render() {
@@ -29,7 +43,7 @@ class GalleryItem extends Component {
             <tr key={this.props.i}>
                 <td onClick={this.handleColumnClick}>{thingToShow}</td>
                 <td>{this.props.createImage.likes}</td>
-                <td><button>Like</button></td>
+                <td><button onClick={this.updateLikes}>Like</button></td>
             </tr>
         );
     }
