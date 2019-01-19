@@ -17,18 +17,25 @@ const pool = new Pool({
 
 // PUT Route
 router.put('/like/:id', (req, res) => {
-    console.log(req.params);
-    const galleryId = req.params.id;
-    for(const galleryItem of galleryItems) {
-        if(galleryItem.id == galleryId) {
-            galleryItem.likes += 1;
-        }
-    }
-    res.sendStatus(200);
+    const queryText =  `UPDATE "images" SET "likes" += 1
+                        WHERE "id"=$1`
+    pool.query(queryText, [req.params.id]).then(response => {
+
+    }).catch(error => {
+        console.log('error in PUT ', error);
+        res.sendStatus(500);
+    });
 }); // END PUT Route
 
 // GET Route
 router.get('/', (req, res) => {
+    const queryText = `SELECT * FROM "images"`
+    pool.query(queryText).then(response => {
+        res.send(response.rows)
+    }).catch(error => {
+        console.log('error in /GET', error);
+        res.sendStatus(500);
+    });
     
 }); // END GET Route
 
