@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import Axios from 'axios';
+import axios from 'axios';
 
 class GalleryItem extends Component {
     constructor(props) {
@@ -20,12 +20,30 @@ class GalleryItem extends Component {
     updateLikes = () => {
         console.log('like clicked');
 
-        Axios({
+        axios({
             method: 'PUT',
             url: `/gallery/like/${this.props.createImage.id}`
         }).then(response => {
             this.props.refreshGallery();
+        }).catch(error => {
+            alert('Error when attempting PUT')
         })
+        
+    }
+
+    deleteRow = () => {
+        console.log('delete clicked');
+
+        axios({
+            method: 'DELETE',
+            url: `/gallery/${this.props.createImage.id}`
+        }).then(response => {
+            this.props.refreshGallery();
+        }).catch(error => {
+            alert('Eror when attempting DELETE')
+            
+        })
+
         
     }
 
@@ -44,6 +62,7 @@ class GalleryItem extends Component {
                 <td onClick={this.handleColumnClick}>{thingToShow}</td>
                 <td>{this.props.createImage.likes}</td>
                 <td><button onClick={this.updateLikes}>Like</button></td>
+                <td><button onClick={this.deleteRow}>Delete</button></td>
             </tr>
         );
     }
