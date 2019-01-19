@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const galleryItems = require('../modules/gallery.data');
+// const galleryItems = require('../modules/gallery.data');
 const pg = require('pg');
 
 const Pool = pg.Pool;
@@ -49,5 +49,16 @@ router.delete('/:id', (req,res) => {
         res.sendStatus(500);
     });
 })// END OF DELETE ROUTE
+
+router.post('/', (req, res) => {
+    const queryText = `INSERT INTO "images" ("path","description")
+                        VALUES ($1, $2)`
+    pool.query(queryText, [req.body.imageUrl, req.body.imageDescription]).then(response => {
+        res.sendStatus(201);
+    }).catch(error => {
+        console.log('error in POST', error);
+        res.sendStatus(500);
+    })
+})
 
 module.exports = router;
