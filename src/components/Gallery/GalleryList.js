@@ -21,6 +21,7 @@ class GalleryList extends Component {
                     <th>Image</th>
                     <th>Description</th>
                     <th>Likes</th>
+                    <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
