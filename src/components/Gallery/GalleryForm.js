@@ -26,6 +26,7 @@ class GalleryForm extends Component {
         
     })
 
+    // Add image to page and db
     addImage = (event) => {
         event.preventDefault();
 
@@ -33,17 +34,15 @@ class GalleryForm extends Component {
             imageUrl: this.state.imageUrl,
             imageDescription: this.state.imageDescription
         }
-        // this.props.packageImageData(imageData);
-        
-            axios({
-                method: 'POST',
-                url: '/gallery',
-                data: imageData
-            }).then(response => {
-                this.props.refreshGallery();
-            }).catch(error => {
-                alert('Error in POST')
-            })
+        axios({
+            method: 'POST',
+            url: '/gallery',
+            data: imageData
+        }).then(response => {
+            this.props.refreshGallery();
+        }).catch(error => {
+            alert('Error in POST')
+        })
         
         
     }

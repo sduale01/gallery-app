@@ -17,19 +17,6 @@ class App extends Component {
     this.refreshGallery();
   }
 
-  // packageImageData = (imageInfo) => {
-  //   axios({
-  //     method: 'POST',
-  //     url: '/gallery',
-  //     data: imageInfo
-  //   }).then(response => {
-  //     this.refreshGallery();
-  //   }).catch(error => {
-  //     alert('Error in POST')
-  //   })
-  // }
-
-
   // To display what is on the server on to the DOM
   refreshGallery = () => {
     axios({
@@ -46,9 +33,6 @@ class App extends Component {
       
     })
   }
-
-  
-
 
   render() {
     
