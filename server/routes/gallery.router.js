@@ -17,10 +17,10 @@ const pool = new Pool({
 
 // PUT Route
 router.put('/like/:id', (req, res) => {
-    const queryText =  `UPDATE "images" SET "likes" += 1
+    const queryText =  `UPDATE "images" SET "likes" = "likes" + 1
                         WHERE "id"=$1`
     pool.query(queryText, [req.params.id]).then(response => {
-
+        res.sendStatus(200);
     }).catch(error => {
         console.log('error in PUT ', error);
         res.sendStatus(500);
@@ -29,7 +29,7 @@ router.put('/like/:id', (req, res) => {
 
 // GET Route
 router.get('/', (req, res) => {
-    const queryText = `SELECT * FROM "images"`
+    const queryText = `SELECT * FROM "images" ORDER BY "id"`
     pool.query(queryText).then(response => {
         res.send(response.rows)
     }).catch(error => {
