@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import axios from 'axios';
 import GalleryList from './../Gallery/GalleryList.js'
+import GalleryForm from './../Gallery/GalleryForm.js'
 
 class App extends Component {
   constructor() {
@@ -15,7 +16,6 @@ class App extends Component {
   componentDidMount() {
     this.refreshGallery();
   }
-
 
   // To display what is on the server on to the DOM
   refreshGallery = () => {
@@ -34,15 +34,15 @@ class App extends Component {
     })
   }
 
-  
-
-
   render() {
+    
     return (
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">Gallery of my life</h1>
         </header>
+        <br/>
+        < GalleryForm refreshGallery={this.refreshGallery}/>
         <br/>
         <GalleryList photoGallery={this.state.photoGallery} refreshGallery={this.refreshGallery}/>
         

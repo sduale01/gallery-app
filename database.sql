@@ -6,8 +6,8 @@ CREATE TABLE images(
 );
 
 INSERT INTO "images"
-    ("path","description","likes")
+    ("path","description")
 VALUES
-    ('images/goat_small.jpg', 'Photo of a goat taken at Glacier National Park.', 0),
-    ('images/P1GTR.jpg', 'Photo of a Mclaren P1GTR', 2);
+    ('images/goat_small.jpg', 'Photo of a goat taken at Glacier National Park.'),
+    ('images/P1GTR.jpg', 'Photo of a Mclaren P1GTR');
 		
