@@ -57,12 +57,12 @@ class App extends Component {
         <Grid item xs={12}>
           <Paper className={classes.paper}>Gallery of My Life</Paper>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={9}>
           <Paper className={classes.paper}>
             <GalleryList photoGallery={this.state.photoGallery} refreshGallery={this.refreshGallery}/>
           </Paper>
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={3}>
           <Paper className={classes.paper}>
             < GalleryForm refreshGallery={this.refreshGallery}/>
           </Paper>
