@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import UploadBtn from './UploadBtn.js'
 
 class GalleryForm extends Component {
     constructor() {
@@ -51,7 +52,7 @@ class GalleryForm extends Component {
             <form onSubmit={this.addImage}>
                 <input onChange={this.handleImageUrl} type="text" placeholder="Enter image url" />
                 <input onChange={this.handleImageDescription} type="text" placeholder="Enter Description" />
-                <button>Submit</button>
+                <UploadBtn />
             </form>
         );
     }
