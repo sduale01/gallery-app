@@ -1,5 +1,16 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import UploadBtn from './UploadBtn.js'
+import TexFiled from '@material-ui/core/TextField'
+import { withStyles } from '@material-ui/core/styles';
+
+// for styling 
+const styles = them => ({
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap'
+    }
+})
 
 class GalleryForm extends Component {
     constructor() {
@@ -47,14 +58,30 @@ class GalleryForm extends Component {
         
     }
     render() {
+        const {classes} = this.props;
         return (
-            <form onSubmit={this.addImage}>
-                <input onChange={this.handleImageUrl} type="text" placeholder="Enter image url" />
-                <input onChange={this.handleImageDescription} type="text" placeholder="Enter Description" />
-                <button>Submit</button>
+            <form className={classes.container} onSubmit={this.addImage}>
+                <TexFiled 
+                    onChange={this.handleImageUrl} 
+                    type="text"
+                    variant="outlined"
+                    label = "Enter image url"
+                    margin="normal"
+                />
+                    
+                <TexFiled 
+                    onChange={this.handleImageDescription} 
+                    type="text"
+                    variant="outlined"
+                    margin="normal"
+                    label="Enter Description"
+                    multiline
+                    rows="8" 
+                />
+                <UploadBtn />
             </form>
         );
     }
 }
 
-export default GalleryForm;
+export default withStyles(styles) (GalleryForm);

@@ -3,6 +3,21 @@ import './App.css';
 import axios from 'axios';
 import GalleryList from './../Gallery/GalleryList.js'
 import GalleryForm from './../Gallery/GalleryForm.js'
+import {withStyles} from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
+import Grid from '@material-ui/core/Grid'
+
+const styles = theme => ({
+      root: {
+        flexGrow: 1
+      },
+      paper: {
+        padding: theme.spacing.unit * 2,
+        textAlign: 'center',
+        color: theme.palette.text.secondary
+      }
+    });
+
 
 class App extends Component {
   constructor() {
@@ -23,7 +38,7 @@ class App extends Component {
       method: 'GET',
       url: '/gallery'
     }).then(response => {
-      console.log('response from server is:', response.data);
+      // console.log('response from server is:', response.data);
       this.setState({
         photoGallery: response.data
       })
@@ -35,16 +50,25 @@ class App extends Component {
   }
 
   render() {
-    
+    const {classes} = this.props;
     return (
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Gallery of my life</h1>
-        </header>
-        <br/>
-        < GalleryForm refreshGallery={this.refreshGallery}/>
-        <br/>
-        <GalleryList photoGallery={this.state.photoGallery} refreshGallery={this.refreshGallery}/>
+      <div className={classes.root}>
+      <Grid container spacing={24}>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>Gallery of My Life</Paper>
+        </Grid>
+        <Grid item xs={9}>
+          <Paper className={classes.paper}>
+            <GalleryList photoGallery={this.state.photoGallery} refreshGallery={this.refreshGallery}/>
+          </Paper>
+        </Grid>
+        <Grid item xs={3}>
+          <Paper className={classes.paper}>
+            < GalleryForm refreshGallery={this.refreshGallery}/>
+          </Paper>
+        </Grid>
+      </Grid>
+        
         
         {/* <img src="images/goat_small.jpg"/> */}
       </div>
@@ -52,4 +76,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withStyles(styles) (App);
