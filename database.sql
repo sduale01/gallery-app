@@ -1,3 +1,5 @@
+-- Database name: image-gallery
+
 CREATE TABLE images(
     "id" SERIAL PRIMARY KEY,
     "path" VARCHAR (50),
