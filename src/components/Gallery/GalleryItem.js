@@ -1,5 +1,16 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import Card from '@material-ui/core/Card';
+import { CardContent, CardMedia, Typography, withStyles } from '@material-ui/core';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import Button from '@material-ui/core/Button';
+
+const styles = {
+    media: {
+        height: 140,
+    }
+}
 
 class GalleryItem extends Component {
     constructor(props) {
@@ -46,26 +57,49 @@ class GalleryItem extends Component {
 
         
     }
-
-
-
     render() {
+        const {classes} = this.props;
         const isImage = this.state.isImage;
         let thingToShow;
         if(isImage) {
-            thingToShow = <img src={this.props.createImage.path} alt="white goat"/>
+            thingToShow = <CardMedia
+                className={classes.media} 
+                image={this.props.createImage.path} 
+                alt="white goat"
+                />
         } else {
-            thingToShow = <div>{this.props.createImage.description}</div>
+            thingToShow = <Typography className={classes.media}>{this.props.createImage.description}</Typography>
         }   
         return (
-            <tr key={this.props.i}>
-                <td onClick={this.handleColumnClick}>{thingToShow}</td>
-                <td>{this.props.createImage.likes}</td>
-                <td><button onClick={this.updateLikes}>Like</button></td>
-                <td><button onClick={this.deleteRow}>Delete</button></td>
-            </tr>
+            // <tr key={this.props.i}>
+            //     <td onClick={this.handleColumnClick}>{thingToShow}</td>
+            //     <td>{this.props.createImage.likes}</td>
+            //     <td><button onClick={this.updateLikes}>Like</button></td>
+            //     <td><button onClick={this.deleteRow}>Delete</button></td>
+            // </tr>
+            <CardContent>
+                <CardActionArea onClick={this.handleColumnClick}>
+                    {thingToShow}
+                </CardActionArea>
+                <CardActionArea>
+                    <CardContent>
+                        <Typography>
+                            {this.props.createImage.likes}
+                        </Typography>
+                    </CardContent>
+                </CardActionArea>
+                <CardActionArea>
+                    <Button onClick={this.updateLikes} variant="contained" size="small" color="primary">
+                        Like
+                    </Button>
+                    <Button onClick={this.deleteRow} variant="contained" size="small" color="primary">
+                        Delete
+                    </Button>
+                </CardActionArea>
+
+            </CardContent>
         );
     }
 }
 
-export default GalleryItem;
+export default withStyles(styles) (GalleryItem);

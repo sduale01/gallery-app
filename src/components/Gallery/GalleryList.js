@@ -1,5 +1,17 @@
 import React, {Component} from 'react';
 import GalleryItem from './GalleryItem.js'
+import { withStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import { CardContent } from '@material-ui/core';
+
+const styles = {
+    card: {
+        maxWidth: 345,
+    }, 
+    media: {
+        height: 140,
+    },
+}
 
 class GalleryList extends Component {
       appendImagesToPage = () => {
@@ -13,23 +25,30 @@ class GalleryList extends Component {
     return imagesArr;
   }
     render() {
+        const {classes} = this.props;
         return (
-            <table>
-                <thead>
-
-                    <tr>
-                    <th>Image</th>
-                    <th>Description</th>
-                    <th>Likes</th>
-                    <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <Card className={classes.card}>
+                
                     {this.appendImagesToPage()}
-                </tbody>
-            </table>
+                
+            </Card>
+            // <table>
+            //     <thead>
+
+            //         <tr>
+            //         <th>Image</th>
+            //         <th>Description</th>
+            //         <th>Likes</th>
+            //         <th>Delete</th>
+            //         </tr>
+            //     </thead>
+            //     <tbody>
+            //         {this.appendImagesToPage()}
+            //     </tbody>
+            // </table>
+
         );
     }
 }
 
-export default GalleryList;
+export default withStyles(styles) (GalleryList);
