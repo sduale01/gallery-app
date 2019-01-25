@@ -12,4 +12,4 @@ Node
 Express
 
 ### Website will look like...
-![Image of Webpage] (https://github.com/sduale01/zaurak-weekend-4-gallery/tree/master/public/images/gallery-website-image.png)
+![Image of  Webpage](https://github.com/sduale01/zaurak-weekend-4-gallery/tree/master/public/images/gallery-website-image.png)
