@@ -9,6 +9,9 @@ import Button from '@material-ui/core/Button';
 const styles = {
     media: {
         height: 140,
+    },
+    card: {
+        maxWidth: 245,
     }
 }
 
@@ -71,12 +74,7 @@ class GalleryItem extends Component {
             thingToShow = <Typography className={classes.media}>{this.props.createImage.description}</Typography>
         }   
         return (
-            // <tr key={this.props.i}>
-            //     <td onClick={this.handleColumnClick}>{thingToShow}</td>
-            //     <td>{this.props.createImage.likes}</td>
-            //     <td><button onClick={this.updateLikes}>Like</button></td>
-            //     <td><button onClick={this.deleteRow}>Delete</button></td>
-            // </tr>
+            <Card className={classes.card} className="contain-cards">
             <CardContent>
                 <CardActionArea onClick={this.handleColumnClick}>
                     {thingToShow}
@@ -88,16 +86,17 @@ class GalleryItem extends Component {
                         </Typography>
                     </CardContent>
                 </CardActionArea>
-                <CardActionArea>
+                {/* <CardActionArea> */}
                     <Button onClick={this.updateLikes} variant="contained" size="small" color="primary">
                         Like
                     </Button>
                     <Button onClick={this.deleteRow} variant="contained" size="small" color="primary">
                         Delete
                     </Button>
-                </CardActionArea>
+                {/* </CardActionArea> */}
 
             </CardContent>
+            </Card>
         );
     }
 }

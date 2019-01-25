@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import UploadBtn from './UploadBtn.js'
-import TexFiled from '@material-ui/core/TextField'
+import TextFiled from '@material-ui/core/TextField'
 import { withStyles } from '@material-ui/core/styles';
 
 // for styling 
@@ -61,7 +61,7 @@ class GalleryForm extends Component {
         const {classes} = this.props;
         return (
             <form className={classes.container} onSubmit={this.addImage}>
-                <TexFiled 
+                <TextFiled 
                     onChange={this.handleImageUrl} 
                     type="text"
                     variant="outlined"
@@ -69,7 +69,7 @@ class GalleryForm extends Component {
                     margin="normal"
                 />
                     
-                <TexFiled 
+                <TextFiled 
                     onChange={this.handleImageDescription} 
                     type="text"
                     variant="outlined"

@@ -68,9 +68,6 @@ class App extends Component {
           </Paper>
         </Grid>
       </Grid>
-        
-        
-        {/* <img src="images/goat_small.jpg"/> */}
       </div>
     );
   }

@@ -1,7 +1,15 @@
-## Description
+## Photo Gallery Application 
 
 This is an app that will display photos and allow the user to add photos to the page.
 The user can click on a photo and get a description.
 The user can like a photo as well as delete a photo.
 
-React was used to build this app and Material UI was used for styling.
+### Built With...
+React.js
+Redux
+database: Postico/PostgreSQL
+Node
+Express
+
+### Website will look like...
+![Finshed Webpage] (https://github.com/sduale01/zaurak-weekend-4-gallery/tree/master/public/images/gallery-website-image.png)

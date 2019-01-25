@@ -22,8 +22,11 @@
   to { transform: rotate(360deg); }
 }
 
-/* img {
-  height: 200px;
-  width: 300px;
+/* .allCards, .card {
+  float: left;
 } */
+
+.contain-cards {
+  display: inline-block;
+}
 
