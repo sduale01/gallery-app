@@ -13,4 +13,4 @@ The user can click on a photo and get a description, user can like a photo, as w
 * HTML/CSS
 
 ### Website will look like...
-![Gallery App](https://github.com/sduale01/zaurak-weekend-4-gallery/tree/master/public/images/gallery-website-image.png)
+![Gallery App](public/images/gallery-website-image.png)
